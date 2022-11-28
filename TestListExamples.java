@@ -54,32 +54,32 @@ public class TestListExamples {
   public void testMerge() {
     List<String> input1 = new ArrayList<>();
     List<String> input2 = new ArrayList<>();
-    List<String> expected = new ArrayList<>();
-    input1.add("ti");
-    input1.add("re");
-    input2.add("d");
-    input2.add("422");
-    expected.add("ti");
-    expected.add("d");
-    expected.add("re");
-    expected.add("422");
-    assertEquals(expected, ListExamples.merge(input1, input2));
+    List<String> output = new ArrayList<>();
+    input1.add("1");
+    input1.add("3");
+    input2.add("2");
+    input2.add("4");
+    output.add("1");
+    output.add("2");
+    output.add("3");
+    output.add("4");
+    assertEquals(output, ListExamples.merge(input1, input2));
   }
 
   @Test(timeout = 100)
   public void testMergeMany() {
     List<String> input1 = new ArrayList<>();
     List<String> input2 = new ArrayList<>();
-    List<String> expected = new ArrayList<>();
-    input1.add("ti");
-    input1.add("re");
-    input2.add("ti");
-    input2.add("re");
-    expected.add("ti");
-    expected.add("ti");
-    expected.add("re");
-    expected.add("re");
-    assertEquals(expected, ListExamples.merge(input1, input2));
+    List<String> output = new ArrayList<>();
+    input1.add("1");
+    input1.add("2");
+    input2.add("1");
+    input2.add("2");
+    output.add("1");
+    output.add("1");
+    output.add("2");
+    output.add("2");
+    assertEquals(output, ListExamples.merge(input1, input2));
   }
 
   @Test(timeout = 100)

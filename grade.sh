@@ -28,14 +28,24 @@ fi
 java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore TestListExamples > output.txt
 grep "Tests run:" < output.txt > results.txt
 PASSED=`wc -l results.txt | grep -o '[0-9]'`
-VARS=(`grep -Eo '[0-9]{1,2}' < results.txt`)
 
-if [[ ${VARS[0]} -ne ${VARS[1]} ]]
+if [[ $PASS == 0 ]]
 then
-    echo "error"
-    echo "$((${VARS[0]}-${VARS[1]}))/7 tests passed."
-else
     echo "All tests passed."
+
+else
+    VARS=(`grep -Eo '[0-9]{1,2}' < results.txt`)
+
+    if [[ ${VARS[0]} -ne 7 ]]
+    then
+        echo "failed to compile"
+        echo ${VARS[0]}
+        echo ${VARS[1]}
+    else
+        echo ${VARS[0]}
+        echo ${VARS[1]}
+        echo "$((${VARS[0]}-${VARS[1]}))/7 tests passed."
+    fi
 fi
 cat output.txt
 
